@@ -1,0 +1,10 @@
+##Band pass filter with its center frequency at 500 Hz, ##
+##its low frequency (-3 dB) cutoff at 300 Hz, ##
+##and its upper frequency cutoff at 750 Hz as per Nasometer 6450 manual##
+##To approximate in Praat using pass Hann band##
+## from 250 hz to 750 hz - smoothing 200 hz##
+##May be an issue for male speakers with low F0##
+
+sound = selected ("Sound")
+Filter (pass Hann band): 250, 750, 200
+Rename: "pHb filtered"

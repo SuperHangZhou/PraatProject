@@ -1,0 +1,30 @@
+##Band pass filter with its center frequency at 500 Hz, ##
+##its low frequency (-3 dB) cutoff at 300 Hz, ##
+##and its upper frequency cutoff at 750 Hz as per Nasometer 6450 manual##
+##To approximate in Praat using pass Hann band##
+## from 250 hz to 750 hz - smoothing 200 hz##
+##May be an issue for male speakers with low F0##
+##Also seperates nasal (1) and oral (2) channels##
+
+sound = selected ("Sound")
+Filter (pass Hann band): 250, 750, 200
+Rename: "pHb filtered"
+Extract all channels
+
+sound = selected ("Sound")
+tmin = Get start time
+tmax = Get end time
+To Pitch: 0.001, 75, 300
+Rename: "pitch"
+selectObject: sound
+To Intensity: 75, 0.001
+Rename: "intensity"
+writeInfoLine: "Here are the results: time - pitch(Hz) - Amplitude(dB) - RMSqIntensity(Pa)"
+for i to (tmax-tmin)/0.01
+	time = tmin + i * 0.01
+	selectObject: "Pitch pitch"
+	pitch = Get value at time: time, "Hertz", "Linear"
+	selectObject: "Intensity intensity"
+	intensity = Get value at time: time, "Cubic"
+	appendInfoLine: fixed$ (time,2), " ", fixed$ (pitch, 3), " ", fixed$ (intensity, 3), " ", 0.00002 * 10^(intensity/20)
+endfor

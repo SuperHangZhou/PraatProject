@@ -1,0 +1,7 @@
+we have a script that can get the pitch, amplitude and intensity in 10ms intervals
+>>PassBandFilterScript_wOralNasalChannelExtraction_wF0_dB_Pa<<
+The pitch is undefined more often than expected_expecially for speaker with glottal fry
+Will need a determinant other than pitch - eg dB level
+Nasometer uses 50 dB min to either microphone but that's with their set up
+Praat dB values are uncalibrated - depends on Monique's set up
+For this test recording might take it to 20 dB limit (either microphone)
